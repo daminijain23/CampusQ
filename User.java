@@ -2,6 +2,16 @@ package guide;
 
 import java.util.HashMap;
 
+/**
+ * A class that represents a thread for any update initiated by user
+ * @author Ashesh Sheth
+ * @author Damini Jain
+ * @author Divya Muralidharan
+ * @params RA instance of Restaurant
+ * @params RB instance of Restaurant
+ * @params RC instance of Restaurant
+ * @params RD instance of Restaurant
+*/
 public class User extends Thread{
 
     public static Restaurant RA = new Restaurant();
@@ -13,16 +23,26 @@ public class User extends Thread{
     public String restaurantName;
     public HashMap<String, Integer> readerLengths;
 
+    /**
+     * constructor
+     * @params restaurantName Name of the restaurant for which a thread is initialised
+     * @params queueLength Input value from the user
+    */
     public User(String restaurantName, int queueLength){
         this.restaurantName = restaurantName;
         this.queueLength = queueLength;
     }
 
+    /**
+     * constructor
+     * @params threadName to calulate and store average queue length
+    */
     public User(String threadName){
         super(threadName);
         readerLengths = new HashMap<>();
     }
 
+    //Thread handling - if update needs to made in queue or average queue length 
     public void run(){
         if(this.getName().equals("LengthReader")){
             outputReader();
@@ -42,6 +62,9 @@ public class User extends Thread{
 
     }
 
+    /**
+     * Method defines logic for the thread that calculates average
+    */
     public void outputReader(){
         readerLengths.put("restaurantA", 0);
         readerLengths.put("restaurantB", 0);
@@ -62,6 +85,9 @@ public class User extends Thread{
         }
     }
 
+    /**
+     * Methods that updates queue with input value
+    */
     public void restaurantA(){
         int oldLength = 0;
         synchronized (User.class){
