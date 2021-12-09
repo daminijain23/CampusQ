@@ -1,13 +1,26 @@
 package guide;
 
+/**
+ * Main handler class of the CampusQ app
+ * @author Ashesh Sheth, Damini Jain, Divya Muralidharan
+*/
 public class CampusQ {
-
+    
+    // Thread that calculates the average of current (five) values in the queue for each of the restaurants.
     public static User readerUser = new User("LengthReader");
 
+    /**
+     * @params restuarantName Name of the restuarnt for which a thread is started and value needs to be updated
+     * @params queueLength The value provided by the user
+    */
     public static void makeUser(String restaurantName, int queueLength){
         new User(restaurantName, queueLength).start();
     }
 
+    /**
+     * A method that fetches the output queue length for a restaurnt.
+     * @params restaurantName Name of the restaurant for which current queue length needs to fetched
+    */
     public static String getQueueLength(String restaurantName){
         if(restaurantName.toLowerCase().equals("all")){
             StringBuilder allRestaurants;
@@ -24,6 +37,10 @@ public class CampusQ {
         }
     }
 
+    /**
+     * A method that gets the current sum for a restaurant.
+     * @params restuarntName Name of a restuarnt for which sum of values in queue needs to be fetched.
+    */
     public static String getSum(String restaurantName)
     {
         if(restaurantName.toLowerCase().equals("restauranta"))
@@ -36,26 +53,4 @@ public class CampusQ {
             return restaurantName + ": " + readerUser.RD.sumOfCurrentBlock;
     }
 
-//    public static void main(String[] args) {
-//        User readerUser = new User("LengthReader");
-//        User user1 = new User(10, "restaurantA");
-//        User user2 = new User(8, "restaurantA");
-//        User user3 = new User(12, "restaurantB");
-//
-//        readerUser.start();
-//        user1.start();
-//        user2.start();
-//        user3.start();
-//        while(true){
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            for(String restaurant : readerUser.readerLengths.keySet()) {
-//                System.out.println(restaurant + ": " + readerUser.readerLengths.get(restaurant));
-//            }
-//        }
-//
-//    }
 }
