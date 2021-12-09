@@ -11,18 +11,19 @@ import com.twilio.twiml.messaging.Message;
 import com.twilio.twiml.MessagingResponse;
 import com.twilio.twiml.TwiMLException;
 
+/** The class that connects the mainlogic and Twilio
+ * @author Ashesh Sheth, Damini Jain, Divya Muralidharan
+*/
 public class CampusQServlet extends HttpServlet {
-//    public String mymsg;
     public static final String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
     public static final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
 
-//    public void init() throws ServletException {
-//        mymsg = "Welcome to RIT CampusQ";
-//    }
-
+    /**
+     * The method recieves request from Twilio's Sandbox, initiates the threads as per requests and send back the response to Twilio
+     * @params request
+     * @params response
+    */
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        out.println("<h1>" + mymsg + "</h1>");
-//        out.println("<p>" + "Ahoy ahoy!" + "</p>");
         String message = "message";
         String body = request.getParameter("Body");
         if (body.toLowerCase().equals("hi") || body.toLowerCase().equals("help")) {
@@ -43,7 +44,7 @@ public class CampusQServlet extends HttpServlet {
                     CampusQ.readerUser.start();
             }
             catch (Exception e){
-                // Ignore
+                //Ignore
             }
             message = CampusQ.getQueueLength(body.split(" ")[1]);
         }
@@ -81,9 +82,5 @@ public class CampusQServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
-//    public static void main(String[] args) {
-//        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-//    }
 }
 
