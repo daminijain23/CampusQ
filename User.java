@@ -7,10 +7,10 @@ import java.util.HashMap;
  * @author Ashesh Sheth
  * @author Damini Jain
  * @author Divya Muralidharan
- * @params RA instance of Restaurant
- * @params RB instance of Restaurant
- * @params RC instance of Restaurant
- * @params RD instance of Restaurant
+ * @param RA instance of Restaurant
+ * @param RB instance of Restaurant
+ * @param RC instance of Restaurant
+ * @param RD instance of Restaurant
 */
 public class User extends Thread{
 
@@ -25,8 +25,8 @@ public class User extends Thread{
 
     /**
      * constructor
-     * @params restaurantName Name of the restaurant for which a thread is initialised
-     * @params queueLength Input value from the user
+     * @param restaurantName Name of the restaurant for which a thread is initialised
+     * @param queueLength Input value from the user
     */
     public User(String restaurantName, int queueLength){
         this.restaurantName = restaurantName;
@@ -35,7 +35,7 @@ public class User extends Thread{
 
     /**
      * constructor
-     * @params threadName to calulate and store average queue length
+     * @param threadName to calulate and store average queue length
     */
     public User(String threadName){
         super(threadName);
